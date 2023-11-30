@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottombar_main"
+        android:icon="@drawable/ic_bottombar_main"
+        android:title="main" />
+    <item
+        android:id="@+id/bottombar_st"
+        android:icon="@drawable/ic_bottombar_st"
+        android:title="statistics" />
+    <item
+        android:id="@+id/bottombar_tag"
+        android:icon="@drawable/ic_bottombar_tag"
+        android:title="tags" />
+</menu>

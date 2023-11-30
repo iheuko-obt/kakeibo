@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SqliteKakeibo</string>
+    <string name="unit_jp">円</string>
+    <string name="tag_hint">タグを選択</string>
+</resources>
