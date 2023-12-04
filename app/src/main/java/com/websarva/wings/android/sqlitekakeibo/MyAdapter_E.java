@@ -71,9 +71,6 @@ public class MyAdapter_E extends RecyclerView.Adapter<MyAdapter_E.ItemViewHolder
         return new ItemViewHolder(v);
     }
 
-    //tempListToAddを独自のクラスに置き換えてentityそのものを保持させて、queryの引数に使いたい
-    //list.add(new MyData("string1", "string2", "string3", new RoomEntity()));
-    //そのクラスに↓で使う用のget○○メソッドもつける
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
@@ -82,19 +79,10 @@ public class MyAdapter_E extends RecyclerView.Adapter<MyAdapter_E.ItemViewHolder
         holder.tag.setText(data.getTag());
         holder.price.setText(data.getEachPrice());
         holder.id.setText(Integer.toString(position));
-
-        //Entity entity = data.getRoomEntity();
-//        holder..setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
     }
 
     @Override
     public int getItemCount() {
-        //Log.d("MyAdapter","itemCount は「" + mDataset.size() + "」");
         return mDataset_E.size();
     }
 

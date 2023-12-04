@@ -2,12 +2,9 @@ package com.websarva.wings.android.sqlitekakeibo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.room.Room;
@@ -49,7 +46,6 @@ public class tagEditActivity extends AppCompatActivity implements tagEdit_dialog
         executor = Executors.newSingleThreadExecutor();
 
         TrecyclerView.setHasFixedSize(true);
-        //LinearLayoutManager LayoutManager = new LinearLayoutManager(this);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         TrecyclerView.setLayoutManager(staggeredGridLayoutManager);
         tag_id = new ArrayList<>();
@@ -100,7 +96,6 @@ public class tagEditActivity extends AppCompatActivity implements tagEdit_dialog
                     @Override
                     public void run() {
                         adapter.notifyDataSetChanged();
-                        //Log.d("a",Integer.toString(tag_id.size()));
                     }
                 });
             }

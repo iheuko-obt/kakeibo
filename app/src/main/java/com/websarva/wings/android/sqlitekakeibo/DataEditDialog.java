@@ -154,27 +154,6 @@ public class DataEditDialog extends DialogFragment {
                     DBEntity newEntity = new DBEntity(date,Tagspinner.getSelectedItem().toString(),Price.getText().toString());
                     newEntity.setId(entity.getId());
                     dao.updateAData(newEntity);
-//                    dao.updateAData(newEntity).subscribeOn(Schedulers.io()) // バックグラウンドスレッドで実行
-//                            .observeOn(AndroidSchedulers.mainThread()) // メインスレッドで結果を受け取る
-//                            .subscribe(new CompletableObserver() {
-//                                @Override
-//                                public void onSubscribe(Disposable d) {
-//                                    // サブスクリプションが開始された際の処理
-//                                }
-//
-//                                @Override
-//                                public void onComplete() {
-//                                    // 処理が正常に完了した場合の処理
-//                                    // ここで成功を通知するか、他のアクションを実行できます
-//                                    onDataEdit.sendRequest();
-//                                }
-//
-//                                @Override
-//                                public void onError(Throwable e) {
-//                                    // エラーが発生した場合の処理
-//                                    // ここでエラーをハンドリングするか、エラーメッセージを表示できます
-//                                }
-//                            });
 
                 }
 
@@ -196,27 +175,7 @@ public class DataEditDialog extends DialogFragment {
             @Override
             public void run() {
                 dao.deleteAData(entity);
-//                dao.deleteAData(entity).subscribeOn(Schedulers.io()) // バックグラウンドスレッドで実行
-//                        .observeOn(AndroidSchedulers.mainThread()) // メインスレッドで結果を受け取る
-//                        .subscribe(new CompletableObserver() {
-//                            @Override
-//                            public void onSubscribe(Disposable d) {
-//                                // サブスクリプションが開始された際の処理
-//                            }
-//
-//                            @Override
-//                            public void onComplete() {
-//                                // 処理が正常に完了した場合の処理
-//                                // ここで成功を通知するか、他のアクションを実行できます
-//                                onDataEdit.sendRequest();
-//                            }
-//
-//                            @Override
-//                            public void onError(Throwable e) {
-//                                // エラーが発生した場合の処理
-//                                // ここでエラーをハンドリングするか、エラーメッセージを表示できます
-//                            }
-//                        });
+
 
             }
 

@@ -16,8 +16,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder>{
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView apartPrice;
-        public TextView sumPrice;
+
         public TextView date;
         public TextView tag;
         public TextView price;
@@ -53,17 +52,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder>{
         holder.date.setText(data.get(0));
         holder.tag.setText(data.get(1));
         holder.price.setText(data.get(2));
-//        holder.mTextView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                removeFromDataset(data);
-//            }
-//        });
+
     }
 
     @Override
     public int getItemCount() {
-      //  Log.d("MyAdapter","itemCount は「" + mDataset.size() + "」");
         return mDataset.size();
     }
 

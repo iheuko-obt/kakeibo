@@ -35,7 +35,6 @@ public class tagAddDialog extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.tag_dialog, null);
 
-        //tagDB db = tagDB.getDatabase(getContext());
         tagDB db = Room.databaseBuilder(getContext(),
                         tagDB.class, "database-name")
                 .build();
@@ -50,11 +49,8 @@ public class tagAddDialog extends DialogFragment {
                         String preTag = inputTagName.getText().toString();
                         preTag = preTag.replaceAll("　", "　");
                         String newTag = preTag.trim();
-                        //ArrayList<String> tagList  = MainActivity.tagList;
 
-                            //!tagList.contains(newTag) &&
-                        if (                               !newTag.equals(MainActivity.firstInSpinner)){
-                            //tagList.add(newTag);
+                        if (  !newTag.equals(MainActivity.firstInSpinner)){
                             tagEntity entity = new tagEntity(newTag);
                             tagDao.insert(entity).subscribeOn(Schedulers.io()) // バックグラウンドスレッドで実行
                                     .observeOn(AndroidSchedulers.mainThread()) // メインスレッドで結果を受け取る

@@ -122,16 +122,6 @@
         app:layout_constraintStart_toEndOf="@+id/tagSpinner"
         app:layout_constraintTop_toBottomOf="@+id/apartPrice" />
 
-    <Button
-        android:id="@+id/SenniButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="遷移"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_toM"
         android:layout_width="match_parent"

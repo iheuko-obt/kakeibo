@@ -1,12 +1,10 @@
 package com.websarva.wings.android.sqlitekakeibo;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import android.app.DialogFragment;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
@@ -37,7 +35,6 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.CompletableObserver;
@@ -127,20 +124,9 @@ public class MainActivity extends AppCompatActivity implements tagAddDialog.onTu
         dateSelected.setOnClickListener(new dateSelectedOnclick());
 
 
-        //room
-//        tagDb = tagDB.getDatabase(getApplicationContext());
-//        tagDao = tagDb.tagSpinnerDao();
-        RoomDatabase.Callback callback = new RoomDatabase.Callback() {
-            @Override
-            public void onOpen (@NonNull SupportSQLiteDatabase db){
-                super.onOpen(db);
-                Log.d("Database Callback", "Database has been opened");
-            }
-        };
 
         tagDb = Room.databaseBuilder(getApplicationContext(),
                         tagDB.class, "database-name")
-                .addCallback(callback)
                 .build();
         tagDao = tagDb.tagSpinnerDao();
 
@@ -153,67 +139,11 @@ public class MainActivity extends AppCompatActivity implements tagAddDialog.onTu
         AdapterView.OnItemSelectedListener spinnerItemSelectedListener = new TagItemClickListener();
         tagSpinner.setOnItemSelectedListener(spinnerItemSelectedListener);
 
-        //database db = database.getDatabase(getApplicationContext());
         database db = Room.databaseBuilder(getApplicationContext(),
                 database.class,"database")
                 .build();
         dao = db.kakeiboDao();
 
-        Button SenniButton = findViewById(R.id.SenniButton);
-        ButtonOnClick_senni senniListener = new ButtonOnClick_senni();
-        SenniButton.setOnClickListener(senniListener);
-
-        //テスト用
-//        ArrayList<String> tempList = new  ArrayList<>(Arrays.asList("2023/11/18", Integer.toString(date_bi),"8979"));
-//        mDataset.add(tempList);
-//
-//        DBEntity entity = new DBEntity("2023/11/18",Integer.toString(date_bi) ,"8979");
-//        dao.insert(entity)
-//                .subscribeOn(Schedulers.io()) // バックグラウンドスレッドで実行
-//                .observeOn(AndroidSchedulers.mainThread()) // メインスレッドで結果を受け取る
-//                .subscribe(new CompletableObserver() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//                        // サブスクリプションが開始された際の処理
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        // 処理が正常に完了した場合の処理
-//                        // ここで成功を通知するか、他のアクションを実行できます
-//                        //Context context = getApplicationContext();
-//                        //Toast.makeText(context,tempDate+ tag_selected+inputPrice_st,Toast.LENGTH_LONG).show();
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        // エラーが発生した場合の処理
-//                    }
-//                });
-//
-//
-//        tagEntity tagtestentity = new tagEntity(Integer.toString(date_bi));
-//        tagDao.insert(tagtestentity).subscribeOn(Schedulers.io()) // バックグラウンドスレッドで実行
-//                .observeOn(AndroidSchedulers.mainThread()) // メインスレッドで結果を受け取る
-//                .subscribe(new CompletableObserver() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//                        // サブスクリプションが開始された際の処理
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        // 処理が正常に完了した場合の処理
-//                        // ここで成功を通知するか、他のアクションを実行できます
-//                        Log.d("tagAdd","complete");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        // エラーが発生した場合の処理
-//                        // ここでエラーをハンドリングするか、エラーメッセージを表示できます
-//                    }
-//                });
 
 
 
@@ -260,14 +190,7 @@ public class MainActivity extends AppCompatActivity implements tagAddDialog.onTu
         }
     }
 
-    private class ButtonOnClick_senni implements View.OnClickListener{
-        @Override
-        public void onClick(View view){
-            Intent intent = new Intent(MainActivity.this, statisticsActivity.class);
-            startActivity(intent);
 
-        }
-    }
 
     private class ButtonOnClick implements View.OnClickListener{
         @Override
@@ -302,10 +225,7 @@ public class MainActivity extends AppCompatActivity implements tagAddDialog.onTu
 
                                         @Override
                                         public void onComplete() {
-                                            // 処理が正常に完了した場合の処理
-                                            // ここで成功を通知するか、他のアクションを実行できます
-                                            //Context context = getApplicationContext();
-                                            //Toast.makeText(context,tempDate+ tag_selected+inputPrice_st,Toast.LENGTH_LONG).show();
+
                                         }
 
                                         @Override
@@ -350,8 +270,6 @@ public class MainActivity extends AppCompatActivity implements tagAddDialog.onTu
                                             public void onComplete() {
                                                 // 処理が正常に完了した場合の処理
                                                 // ここで成功を通知するか、他のアクションを実行できます
-                                                Context context = getApplicationContext();
-                                                //Toast.makeText(context,tempDate+ tag_selected+inputPrice_st,Toast.LENGTH_LONG).show();
                                             }
 
                                             @Override

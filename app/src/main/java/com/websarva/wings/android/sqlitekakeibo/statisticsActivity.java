@@ -5,20 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -31,7 +27,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.reactivex.rxjava3.core.Single;
 
 public class statisticsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener , DataEditDialog.onDataEdit{
 
@@ -42,7 +37,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
 
     public static ArrayList<DataPack> mDataset_E;
     private List<DBEntity> entities;
-    ArrayList<String> tempListTOAdd;
 
     public static TextView monthDisplay;
     private TextView sumPrice;
@@ -84,7 +78,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
         year = Integer.parseInt(calendar_sep[0]);
         month = Integer.parseInt(calendar_sep[1]);
 
-        //db = database.getDatabase(getApplicationContext());
         db = Room.databaseBuilder(getApplicationContext(),
                         database.class,"database")
                 .build();
@@ -93,7 +86,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
 
 
         RecyclerView.LayoutManager RLayoutManager;
-
         recyclerList = findViewById(R.id.recyclerList);
         recyclerList.setHasFixedSize(true);
         RLayoutManager = new LinearLayoutManager(this);
@@ -108,8 +100,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
         monthDisplay.setText(year +"/" + month);
         MonthDisplayOnClick monthDisplayOnClick = new MonthDisplayOnClick();
         monthDisplay.setOnClickListener(monthDisplayOnClick);
-
-
 
         sumPrice = findViewById(R.id.sum_price);
         executor =Executors.newSingleThreadExecutor();
@@ -139,7 +129,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                             if (year == entity.getYearToSort() && month == entity.getMonthToSort()){
                                 mDataset_E.add(new DataPack(entity.getDateToDisplay(), entity.getTag(), entity.getEachPrice(),entity));
                                 sumP += entity.getPriceToCul();
-                                //Log.d("testSum",Integer.toString(sumP));
                             }
                         }
 
@@ -149,24 +138,14 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                             public void run() {
                                 // ここにUIを更新するコードを書く
                                 Radapter.notifyDataSetChanged();
-                                //Log.d("testSumEnd",Integer.toString(sumP));
                                 sumPS = Integer.toString(sumP);
                                 sumPrice.setText(sumPS);
-
-                                //Toast.makeText(context, "11111111", Toast.LENGTH_SHORT).show();
-
                             }
                         });
 
-
                     }
 
-
-
-
                 });
-
-
 
             }
         });
@@ -179,21 +158,17 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
         tagSpinner.setAdapter(adapter);
         AdapterView.OnItemSelectedListener spinnerItemSelectedListener = new TagItemClickListener();
         tagSpinner.setOnItemSelectedListener(spinnerItemSelectedListener);
-        //tagDB = tagDB.getDatabase(getApplicationContext());
         tagDB = Room.databaseBuilder(getApplicationContext(),
                         tagDB.class, "database-name")
                 .build();
         tagDao = tagDB.tagSpinnerDao();
 
 
-        instantMonthButtonListener instantMonthButtonListener = new instantMonthButtonListener();
+         instantMonthButtonListener instantMonthButtonListener = new instantMonthButtonListener();
          button_R = findViewById(R.id.button_R);
          button_L = findViewById(R.id.button_L);
          button_R.setOnClickListener(instantMonthButtonListener);
          button_L.setOnClickListener(instantMonthButtonListener);
-
-         Button senniButton = findViewById(R.id.senniButton);
-         senniButton.setOnClickListener(new ButtonOnClick_senni());
 
          bottomNavigationView = findViewById(R.id.bottom_navigation_toS);
          bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -263,15 +238,12 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
             @Override
             public void run() {
                 // バックグラウンドで実行する処理
-                //Log.d("test","tagRenew");
                 List<tagEntity> tagList = tagDao.setListToTest();
-                //Log.d("tagCount", Integer.toString(tagList.size()));
                 List<String> tempTagList = new ArrayList<>();
                 tempTagList.add("全てのタグ");
 
                 for (tagEntity entity : tagList){
                     tempTagList.add(entity.getTag());
-                    //Log.d("test","tag");
                 }
 
                 runOnUiThread(new Runnable() {
@@ -281,7 +253,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                         adapter.clear();
                         adapter.addAll(tempTagList);
                         adapter.notifyDataSetChanged();
-                        //Log.d("test","tagrenewComplete");
                     }
                 });
 
@@ -471,8 +442,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
 
                     for (DBEntity entity : entities) {
                         if (year == entity.getYearToSort() && month == entity.getMonthToSort()){
-//                                tempListTOAdd = new ArrayList<>(Arrays.asList(entity.getDateToDisplay(), entity.getTag(), entity.getEachPrice()));
-//                                mDataset.add(tempListTOAdd);
                             mDataset_E.add(new DataPack(entity.getDateToDisplay(), entity.getTag(), entity.getEachPrice(),entity));
                             sumP += entity.getPriceToCul();
                         }
@@ -496,15 +465,7 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    //仮設
-    private class ButtonOnClick_senni implements View.OnClickListener{
-        @Override
-        public void onClick(View view){
-            Intent intent = new Intent(statisticsActivity.this, tagEditActivity.class);
-            startActivity(intent);
 
-        }
-    }
 
 
     @Override
