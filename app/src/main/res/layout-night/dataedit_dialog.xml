@@ -90,7 +90,7 @@
         android:text="編集を確定"
         android:textSize="12sp"
         android:backgroundTint="#00000000"
-        android:textColor="@color/black"
+        android:textColor="#858585"
         style="@style/Widget.AppCompat.Button.Borderless"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -118,7 +118,7 @@
         android:text="キャンセル"
         android:textSize="12sp"
         android:backgroundTint="#00000000"
-        android:textColor="@color/black"
+        android:textColor="#858585"
         style="@style/Widget.AppCompat.Button.Borderless"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

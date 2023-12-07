@@ -163,7 +163,6 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                 .build();
         tagDao = tagDB.tagSpinnerDao();
 
-
          instantMonthButtonListener instantMonthButtonListener = new instantMonthButtonListener();
          button_R = findViewById(R.id.button_R);
          button_L = findViewById(R.id.button_L);
