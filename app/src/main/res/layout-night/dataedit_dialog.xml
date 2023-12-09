@@ -10,11 +10,12 @@
         android:id="@+id/year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
         android:ems="4"
         android:inputType="number"
         android:maxLength="4"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +23,7 @@
         android:id="@+id/slash1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="30dp"
         android:text="/"
         app:layout_constraintStart_toEndOf="@+id/year"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,10 +32,11 @@
         android:id="@+id/month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:ems="2"
         android:inputType="number"
         android:maxLength="2"
+        android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/slash1"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +44,7 @@
         android:id="@+id/slash2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="30dp"
         android:text="/"
         app:layout_constraintStart_toEndOf="@+id/month"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,10 +53,11 @@
         android:id="@+id/day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:ems="2"
         android:inputType="number"
         android:maxLength="2"
+        android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/slash2"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,7 +65,8 @@
         android:id="@+id/Tag"
         android:layout_width="162dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="110dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,14 +75,24 @@
         android:id="@+id/Price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="60dp"
         android:ems="7"
         android:inputType="number"
         android:maxLength="9"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/day"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="75dp"
+        android:text="円"
+        app:layout_constraintStart_toEndOf="@+id/Price"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -122,4 +136,6 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

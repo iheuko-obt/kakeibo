@@ -147,18 +147,20 @@ public class DataEditDialog extends DialogFragment {
         //変更確定とダイアログを閉じる
         @Override
         public void onClick(View view){
-            executor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    String date = year.getText() + "/" + month.getText() + "/" + day.getText();
-                    DBEntity newEntity = new DBEntity(date,Tagspinner.getSelectedItem().toString(),Price.getText().toString());
-                    newEntity.setId(entity.getId());
-                    dao.updateAData(newEntity);
+            if (year.getText().toString().length() == 4){
+                executor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        String date = year.getText() + "/" + month.getText() + "/" + day.getText();
+                        DBEntity newEntity = new DBEntity(date,Tagspinner.getSelectedItem().toString(),Price.getText().toString());
+                        newEntity.setId(entity.getId());
+                        dao.updateAData(newEntity);
 
-                }
+                    }
 
 
-            });
+                });
+            }
 
             closeDialog();
             onDataEdit.sendRequest();

@@ -139,7 +139,7 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                                 // ここにUIを更新するコードを書く
                                 Radapter.notifyDataSetChanged();
                                 sumPS = Integer.toString(sumP);
-                                sumPrice.setText(sumPS);
+                                sumPrice.setText("合計 " + sumPS + "円");
                             }
                         });
 
@@ -224,7 +224,7 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                     public void run() {
                         // ここにUIを更新するコードを書く
                         Radapter.notifyDataSetChanged();
-                        sumPrice.setText(Integer.toString(sumP));
+                        sumPrice.setText("合計 " + Integer.toString(sumP) + "円");
                     }
                 });
 
@@ -355,7 +355,7 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                             // ここにUIを更新するコードを書く
                             Radapter.notifyDataSetChanged();
                             sumPS = Integer.toString(sumP);
-                            sumPrice.setText(sumPS);
+                            sumPrice.setText("合計 " + sumPS + "円");
                         }
                     });
                 }
@@ -454,7 +454,7 @@ public class statisticsActivity extends AppCompatActivity implements AdapterView
                         // ここにUIを更新するコードを書く
                         Radapter.notifyDataSetChanged();
                         sumPS = Integer.toString(sumP);
-                        sumPrice.setText(sumPS);
+                        sumPrice.setText("合計 " + sumPS + "円");
                     }
                 });
             }
