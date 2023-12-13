@@ -19,10 +19,10 @@ public interface kakeiboDao {
     @Query("SELECT * FROM dbentitys")
     LiveData<List<DBEntity>> setList();
 
-    @Query("SELECT * FROM dbentitys")
+    @Query("SELECT * FROM dbentitys ORDER BY date_to_sort DESC")
     List<DBEntity> getList();
 
-    @Query("SELECT * FROM dbentitys WHERE tag = :tag")//tag引数にとって取得させる
+    @Query("SELECT * FROM dbentitys WHERE tag = :tag ORDER BY date_to_sort DESC")//tag引数にとって取得させる
     List<DBEntity> getApartList(String tag);
 
     @Insert

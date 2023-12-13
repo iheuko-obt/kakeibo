@@ -147,7 +147,18 @@ public class DataEditDialog extends DialogFragment {
         //変更確定とダイアログを閉じる
         @Override
         public void onClick(View view){
-            if (year.getText().toString().length() == 4){
+            boolean key = true;
+            try {
+                Double.parseDouble(year.getText().toString());
+                Double.parseDouble(month.getText().toString());
+                Double.parseDouble(day.getText().toString());
+                Double.parseDouble(Price.getText().toString());
+            }
+            catch (NumberFormatException e){
+                closeDialog();
+                key = false;
+            }
+            if (year.getText().toString().length() == 4 && key ){
                 executor.execute(new Runnable() {
                     @Override
                     public void run() {
